@@ -25,10 +25,10 @@ public class ListnerIssueTest extends TestBase {
     @Owner("Dmitry Rodichev")
     @Severity(SeverityLevel.NORMAL)
     void testIssue() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-        step("Открываем главную страницу" + GITHUB_URL, () -> {
-            open(GITHUB_URL);
-        });
+
+        step("Открываем главную страницу" + GITHUB_URL, () ->
+                open(GITHUB_URL));
+
         step("Ищем репозиторий" + REPOSITORY, () -> {
             $(".header-search-input").click();
             $(".header-search-input").setValue(REPOSITORY).submit();
@@ -50,14 +50,13 @@ public class ListnerIssueTest extends TestBase {
         @Owner("Dmitry Rodichev")
         @Severity(SeverityLevel.NORMAL)
         public void stepTestIssue() {
-            SelenideLogger.addListener("allure", new AllureSelenide());
-            StepTestIssue StepTestIssue = new StepTestIssue();
+            StepTestIssue stepTestIssue = new StepTestIssue();
 
-            StepTestIssue.openStartPage(GITHUB_URL);
-            StepTestIssue.searchRepo(REPOSITORY);
-            StepTestIssue.openRepo(REPOSITORY);
-            StepTestIssue.openIssueTab();
-            StepTestIssue.checkIssueByName(ISSUE_NUMBER);
+            stepTestIssue.openStartPage(GITHUB_URL);
+            stepTestIssue.searchRepo(REPOSITORY);
+            stepTestIssue.openRepo(REPOSITORY);
+            stepTestIssue.openIssueTab();
+            stepTestIssue.checkIssueByName(ISSUE_NUMBER);
 
         }
     }
